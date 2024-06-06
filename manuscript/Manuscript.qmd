@@ -16,13 +16,13 @@ format:
     embed-resources: true
   pdf:
     pdf-engine: xelatex
-    number-sections: false
+    number-sections: false #table of content,direct jump to sections
     margin-left: 0.8in
     margin-right: 0.8in
     margin-top: 0.8in
     margin-bottom: 0.8in
     toc: true
-    keep-tex: true
+    keep-tex: true #tex file retained
     include-in-header:
       text: |
         \usepackage{lineno}
@@ -44,6 +44,7 @@ source("../analysis/scripts/statistics_for_paper.R")
 
 **text in bold** *italic* [underline]{.underline}
 
+I am tying on this R markdown document for practise.
 # Introduction
 
 You can add references either by referring to their id in the .bib file e.g., [@Marinkovi2020], or by switching to the visual editor (Cogwheel in the .Rmd menu -\> Use Visual Editor). [@Jokura_2023][@Jokura_2023][@Jacobs2023]
@@ -88,7 +89,7 @@ print("hi")
 ```
 
 ```{r, out.width = "100%", fig.cap="**Figure 1. A figure** (A) A nice picture. (B) legend.  (C) <br> (D) " }
-#| echo: false 
+#| echo: false #if 'false' code not displayed in final document
 
 knitr::include_graphics("figures/Figure1.png")
 ```
@@ -107,7 +108,7 @@ $$
 \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{n}
 $$
 
-\
+/ #to add a new line. Visual mode you can add spaces
 
 ## Sourcing code and working with variable
 
