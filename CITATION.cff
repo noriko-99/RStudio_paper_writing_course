@@ -4,7 +4,7 @@
 cff-version: 1.2.0
 title: >-
   Code documentation for my paper
-message: >-
+message: >-https://doi.org/10.5281/zenodo.10978753
   If you use this software, please cite it using the
   metadata from this file.
 type: software
@@ -21,6 +21,20 @@ authors:
 identifiers:
   - type: doi
     value: add.the.zenodo.repository.doi
-repository-code: 'https://github.com/add_github_link'
+repository-code: '@software{X_Code_documentation_for_2024,
+author = {X, John and Y, Jane and authors, other},
+license = {CC-BY-4.0},
+month = feb,
+title = {{Code documentation for my paper}},
+url = {@software{X_Code_documentation_for_2024,
+author = {X, John and Y, Jane and authors, other},
+license = {CC-BY-4.0},
+month = feb,
+title = {{Code documentation for my paper}},
+url = {https://github.com/add_github_link},
+year = {2024}
+}},
+year = {2024}
+}'
 license: CC-BY-4.0
 date-released: '2024-02-14'
