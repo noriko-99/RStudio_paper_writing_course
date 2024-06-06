@@ -4,7 +4,7 @@
 # sourcing, installing and loading packages -------------------------------
 
 # installing packages
-install.packages("tidyverse")
+#install.packages("tidyverse")
 
 # source multiple packages from one file
 source("analysis/scripts/packages_and_functions.R")
@@ -98,12 +98,14 @@ data_Ashwini_sel <- data_Ashwini %>%
 data_Ashwini_sel
 
 # Add mean and SD columns with group_by() and mutate() --------
-
+#group by gene and days
 data_Ashwini_sel_M_SD <- data_Ashwini_sel %>%
-  group_by(gene) %>%
+  group_by(gene,days) %>%
   mutate(mean2dct = mean(x2_dct)) %>%
   mutate(sd2dct = sd(x2_dct))
 data_Ashwini_sel_M_SD
+
+
 
 # Change data type -----------
 
@@ -206,7 +208,7 @@ plot_Ashwini_ct
 # Plot the Synuclein data ----------
 tb_syn
 plot_syn <- tb_syn %>%
-  ggplot(aes(x = Time, y = fluorescence, color = fluorescence)) +
+  ggplot(aes(x = Time, y = fluorescence, colour = fluorescence)) +
   geom_smooth(method = 'loess') +
   theme_minimal()
 plot_syn
@@ -255,7 +257,7 @@ theme_plots <- theme_minimal() +
     legend.text = element_text(size = 10),
     legend.title = element_text(size = 12),
     legend.key.size = unit(7, "mm"),
-    legend.title.position = "top",
+    legend.position =  "top",
     legend.background = element_rect(color = "grey"),
     plot.title.position = "panel"
   )
@@ -306,6 +308,9 @@ img2 <- readPNG("analysis/pictures/plot_Jose1b.png")
 #convert to panels
 panel_JoseA <- ggdraw() + draw_image(img1)
 panel_JoseB <- ggdraw() + draw_image(img2)
+
+# tidyverse ---------------------------------------------------------------
+
 
 #define layout with textual representation
 layout <- "
@@ -393,6 +398,8 @@ image_read("manuscript/figures/Figure_IHC.png")
 # Adding consistent scale bars -----------------
 
 #read images and make annotated panel
+#0.1 and 0.46 are percentages relative to the width of the image. Image is 56um, meaning that when you deduct
+#the percentages you get the value for the scale bar
 panel_NOS2d_HCR <- ggdraw() + draw_image(readPNG("analysis/pictures/HCR-IHC_51_AP_NOS_actub_56um.png")) +
   draw_label("in situ HCR", x = 0.3, y = 0.99, size = 10) +
   draw_label("NOS", x = 0.12, y = 0.9, color="magenta", size = 11, fontface="italic") +
@@ -493,6 +500,7 @@ panel_model <- ggdraw() + draw_image(readPNG("analysis/pictures/Magnitude_model_
 #introduce gap in layout
 layout <- "
 AAAABBBBCCCC
+AAAABBBB####
 AAAABBBBDDDD
 ############
 EEEFFFGGGHHH
@@ -503,10 +511,10 @@ Figure_complex <- panel_Platy + panel_FVRI +  panel_NOS +
   panel_NIT +
   panel_INNOS + panel_Jose + panel_DAF +
   panel_model +
-  plot_layout(design = layout, heights = c(1, 1, 0.05, 2)) +
-  plot_annotation(tag_levels = 'a') & 
-  theme(plot.tag = element_text(size = 12, face='plain'))
-
+  plot_layout(design = layout, heights = c(1, 0.05, 1, 0.05, 2)) +
+  plot_annotation(tag_levels = 'A') & 
+  theme(plot.tag = element_text(size = 12, face='plain'), plot.tag.position = c(0.10, 0.95))  
+ 
 #save figure as png
 ggsave(
   "manuscript/figures/Figure_complex.png",
