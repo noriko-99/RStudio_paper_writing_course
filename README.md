@@ -19,7 +19,7 @@ Our pre-print is online here:
 
 > Authors, (YYYY). *Title of your paper goes here*. Name of
 > journal/book, Accessed 24 Apr 2024. Online at
-> <https://doi.org/xxx/xxx>
+> <https://doi.org/10.5281/zenodo.10978753>
 
 ### How to cite
 
